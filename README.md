@@ -44,9 +44,8 @@ pip install flash-attn --no-build-isolation --no-cache-dir
   - 🤗 [reverse_llava_v15](https://huggingface.co/tsunghanwu/reverse_llava_v15)  
   - 🤗 [reverse_llava_more](https://huggingface.co/tsunghanwu/reverse_llava_more)
 
-- Download required evaluation files from  
-  [Google Drive](https://drive.google.com/file/d/1gdGFNFUAe09dAObVK3Riyr-4ejxYqMSt/view?usp=sharing)  
-  → place them under `playground/data`. Follow the included instructions to download additional assets.
+- Download required evaluation files from [Google Drive](https://drive.google.com/file/d/1gdGFNFUAe09dAObVK3Riyr-4ejxYqMSt/view?usp=sharing)  
+  → Unzip and place them into `playground/data/eval`. Then, follow the included instructions to download additional assets.
 
 - Run evaluations with:
 
@@ -60,9 +59,7 @@ We conduct 100-round bootstrapped evaluation. Reported numbers should closely ma
 
 ### 1. Data Preparation
 
-- Download QA pairs from:  
-  🤗 [tsunghanwu/reverse-instruct-1.3m](https://huggingface.co/datasets/tsunghanwu/reverse-instruct-1.3m)  
-  *(A script to convert them into JSON format is coming soon.)*
+- Download QA pairs from: 🤗 [tsunghanwu/reverse-instruct-1.3m](https://huggingface.co/datasets/tsunghanwu/reverse-instruct-1.3m)  
 
 - Organize datasets under `playground/data/` using the following structure (following [LLaVA’s layout](https://github.com/haotian-liu/LLaVA?tab=readme-ov-file#visual-instruction-tuning)):
 
