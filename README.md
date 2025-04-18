@@ -1,8 +1,30 @@
-# REVERSE-VLM: Vision-Language Model with REtrospective VERification and SElf-correction
+<div align="center">
+  <img src="assets/logo.png" width="200" height="200">
 
-Welcome to the official repository for our paper:  
-📄 [**Generate, but Verify: Reducing Hallucination in Vision-Language Models with Retrospective Resampling**](https://reverse-vlm.github.io/static/pdfs/reverse_release_paper.pdf)  
-Explore our project page [here](https://reverse-vlm.github.io/) for an interactive overview!
+  <h1>REVERSE-VLM:
+    Vision-Language Model with <br>
+    <span style="font-weight: normal;">
+      <span style="color:#d35400; text-decoration: underline; font-weight: bold;">RE</span>trospective 
+      <span style="color:#d35400; text-decoration: underline; font-weight: bold;">VER</span>ification and 
+      <span style="color:#d35400; text-decoration: underline; font-weight: bold;">SE</span>lf-correction
+    </span>
+  </h1>
+
+  <p>
+    <a href="https://huggingface.co/collections/tsunghanwu/reverse-67f410b5d147edf2ed7817ae">
+      <img src="https://img.shields.io/badge/HuggingFace-Collection-orange?logo=huggingface&logoColor=white" alt="HF Collection" />
+    </a>
+    &nbsp;
+    <a href="https://arxiv.org/abs/2504.13169">
+      <img src="https://img.shields.io/badge/arXiv-2504.13169-b31b1b.svg" alt="arXiv" />
+    </a>
+  </p>
+
+</div>
+
+---
+
+Welcome to the official repository for our paper: [**Generate, but Verify: Reducing Hallucination in Vision-Language Models with Retrospective Resampling**](https://arxiv.org/abs/2504.13169). Explore our project page [here](https://reverse-vlm.github.io/) for an interactive overview!
 
 **Authors**: [Tsung-Han Wu](https://tsunghan-wu.github.io/), [Heekyung Lee](https://linkedin.com/in/heekyung-lee-624753289), [Jiaxin Ge](https://jiaxin.ge), [Joseph E. Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/), [Trevor Darrell](https://people.eecs.berkeley.edu/~trevor/), [David M. Chan](https://dchan.cc/) (UC Berkeley & POSTECH)
 
@@ -13,6 +35,9 @@ Explore our project page [here](https://reverse-vlm.github.io/) for an interacti
 ### 📦 Dataset:
 - 🧾 [REVERSE Visual Instruct 1.3M](https://huggingface.co/datasets/tsunghanwu/reverse-instruct-1.3m)
 
+### 📄 Change Log:
+- [04/17/2025]: REVERSE is now live on HuggingFace and GitHub! Explore checkpoints, dataset, and full paper from our <a href="https://reverse-vlm.github.io/">project site</a>.
+
 ---
 
 ## :wrench: Installation Guide
@@ -20,7 +45,7 @@ Explore our project page [here](https://reverse-vlm.github.io/) for an interacti
 1. Clone this repository
 ```bash
 git clone https://github.com/tsunghan-wu/reverse_vlm
-cd reverse_llava
+cd reverse_vlm
 ```
 
 2. Set up the environment
@@ -124,11 +149,10 @@ We are grateful for the foundational code provided by [LLaVA](https://github.com
 
 If you use our work or our implementation in this repo or find them helpful, please consider giving a citation.
 ```
-@article{wu2024visual,
+@article{wu2025reverse,
   title={Generate, but Verify: Reducing Hallucination in Vision-Language Models with Retrospective Resampling},
   author={Wu, Tsung-Han and Lee, Heekyung and Ge, Jiaxin and Gonzalez, Joseph E and Darrell, Trevor and Chan, David M},
-  journal={arXiv},
-  year={2025},
-  url={https://reverse-vlm.github.io/static/pdfs/reverse_release_paper.pdf}
+  journal={arXiv preprint arXiv:2504.13169},
+  year={2025}
 }
 ```
