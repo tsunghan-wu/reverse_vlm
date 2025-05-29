@@ -13,8 +13,8 @@ from datasets import load_dataset
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 
 eval_type_dict = {
-    "Perception": ["existence", "count", "position", "color", "posters", "celebrity", "scene", "landmark", "artwork", "OCR"],
-    "Cognition": ["commonsense_reasoning", "numerical_calculation", "text_translation", "code_reasoning"],
+    # "Perception": ["existence", "count", "position", "color", "posters", "celebrity", "scene", "landmark", "artwork", "OCR"],
+    # "Cognition": ["commonsense_reasoning", "numerical_calculation", "text_translation", "code_reasoning"],
     "Hallucination": ["existence", "count", "position", "color"]
 }
 

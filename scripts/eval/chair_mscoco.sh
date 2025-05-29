@@ -7,6 +7,10 @@ MODE="llava_v15"
 # CKPT_PATH="tsunghanwu/reverse_llava_more"
 # MODE="llama31"
 
+# Qwen2.5-VL-3B
+# CKPT_PATH="tsunghanwu/reverse_qwen25_vl"
+# MODE="qwen25_vl"
+
 CKPT_SUFFIX=""  # useful for debugging
 UN_THRESHOLD=0.003
 IS_OPEN_ENDED_QA="False"
@@ -15,8 +19,13 @@ MSCOCO_DIR="./playground/data/eval/chair_mscoco"
 
 if [ "$MODE" = "llava_v15" ]; then
     LLM_SETTING="--conv-mode vicuna_v1 --llm_backbone vicuna1.5_7b"
+    EXEC="llava.eval.model_vqa_loader"
 elif [ "$MODE" = "llama31" ]; then
     LLM_SETTING="--conv-mode llama_3_1 --llm_backbone llama_3_1 --llm_pad_token pad"
+    EXEC="llava.eval.model_vqa_loader"
+elif [ "$MODE" = "qwen25_vl" ]; then
+    LLM_SETTING=""
+    EXEC="qwenvl.eval.model_vqa_loader"
 else
     echo "Invalid mode: $MODE"
     exit
@@ -34,7 +43,7 @@ CHUNKS=${#GPULIST[@]}
 # CKPT is the last part of the path, turn it into a shell variable
 CKPT="${CKPT_PATH##*/}${CKPT_SUFFIX}"
 for IDX in $(seq 0 $((CHUNKS-1))); do
-    CUDA_VISIBLE_DEVICES=${GPULIST[$IDX]} python -m llava.eval.model_vqa_loader \
+    CUDA_VISIBLE_DEVICES=${GPULIST[$IDX]} python -m $EXEC \
         --model-path $CKPT_PATH \
         --dataset "MSCOCO-CHAIR" \
         --question-file "${MSCOCO_DIR}/chair-500.jsonl" \
@@ -59,7 +68,7 @@ for IDX in $(seq 0 $((CHUNKS-1))); do
     cat "${MSCOCO_DIR}/answers/$CKPT/${CHUNKS}_${IDX}.jsonl" >> "$output_file"
 done
 
-python3 llava/eval/eval_chair.py \
+python3 scripts/eval/eval_chair.py \
     --coco_path "${MSCOCO_DIR}/coco/annotations/" \
     --cache "${MSCOCO_DIR}/chair.pkl" \
     --cap_file $output_file \

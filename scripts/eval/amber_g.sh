@@ -7,6 +7,10 @@ MODE="llava_v15"
 # CKPT_PATH="tsunghanwu/reverse_llava_more"
 # MODE="llama31"
 
+# Qwen2.5-VL-3B
+# CKPT_PATH="tsunghanwu/reverse_qwen25_vl"
+# MODE="qwen2.5_vl_3b"
+
 CKPT_SUFFIX=""  # useful for debugging
 UN_THRESHOLD=0.5
 IS_OPEN_ENDED_QA="False"
@@ -15,8 +19,13 @@ AMBER_DIR="./playground/data/eval/amber"
 
 if [ "$MODE" = "llava_v15" ]; then
     LLM_SETTING="--conv-mode vicuna_v1 --llm_backbone vicuna1.5_7b"
+    EXEC="llava.eval.model_vqa_loader"
 elif [ "$MODE" = "llama31" ]; then
     LLM_SETTING="--conv-mode llama_3_1 --llm_backbone llama_3_1 --llm_pad_token pad"
+    EXEC="llava.eval.model_vqa_loader"
+elif [ "$MODE" = "qwen25_vl" ]; then
+    LLM_SETTING=""
+    EXEC="qwenvl.eval.model_vqa_loader"
 else
     echo "Invalid mode: $MODE"
     exit
@@ -36,7 +45,7 @@ IFS=',' read -ra GPULIST <<< "$gpu_list"
 CHUNKS=${#GPULIST[@]}
 
 for IDX in $(seq 0 $((CHUNKS-1))); do
-    CUDA_VISIBLE_DEVICES=${GPULIST[$IDX]} python -m llava.eval.model_vqa_loader \
+    CUDA_VISIBLE_DEVICES=${GPULIST[$IDX]} python -m $EXEC \
         --model-path $CKPT_PATH \
         --dataset "AMBER-G" \
         --question-file "${AMBER_DIR}/questions/query_generative.jsonl" \
@@ -67,7 +76,7 @@ done
 # sleep for safety
 sleep 2
 
-python llava/eval/eval_amber.py \
+python scripts/eval/eval_amber.py \
     --inference_data $output_file \
     --evaluation_type g \
     --metadata_dir "${AMBER_DIR}/metadata"
