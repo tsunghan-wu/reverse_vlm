@@ -7,7 +7,6 @@ PROJECTOR_PATH="checkpoints/llava_v15_pretraining/mm_projector.bin"  # path to t
 export TOKENIZER_PATH=$LLM_PATH            # path to the tokenizer
 
 
-
 if [ "$MODE" = "llava_v15" ]; then
     LLM_SETTING="--llm_backbone vicuna1.5_7b --version v1"
 elif [ "$MODE" = "llama31" ]; then

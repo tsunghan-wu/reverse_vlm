@@ -123,11 +123,11 @@ if __name__ == "__main__":
     def ci(data):
         return np.percentile(data, [2.5, 97.5])
 
-    print("Average score: {:.2f}, 95% CI: {:.2f}-{:.2f}".format(
+    print("Average score: {:.3f}, 95% CI: {:.3f}-{:.3f}".format(
         df["score"].mean(), *ci(bootstrap_avg_scores)))
 
     print("\nAverage score per hallucination type:")
     for ht in sorted(bootstrap_avg_scores_per_type):
         mean_score = df[df["hallucination_type"] == ht]["score"].mean()
         lb, ub = ci(bootstrap_avg_scores_per_type[ht])
-        print(f"  {ht}: {mean_score:.2f}, 95% CI: {lb:.2f}-{ub:.2f}")
+        print(f"  {ht}: {mean_score:.3f}, 95% CI: {lb:.3f}-{ub:.3f}")
