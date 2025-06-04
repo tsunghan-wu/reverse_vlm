@@ -7,6 +7,10 @@ MODE="llava_v15"
 # CKPT_PATH="tsunghanwu/reverse_llava_more"
 # MODE="llama31"
 
+# Qwen2.5-VL-3B
+# CKPT_PATH="tsunghanwu/reverse_qwen25_vl"
+# MODE="qwen25_vl"
+
 CKPT_SUFFIX=""
 UN_THRESHOLD=0.003
 IS_OPEN_ENDED_QA="True"
@@ -14,8 +18,13 @@ MMHAL_DIR="./playground/data/eval/mmhal"
 
 if [ "$MODE" = "llava_v15" ]; then
     LLM_SETTING="--conv-mode vicuna_v1 --llm_backbone vicuna1.5_7b"
+    EXEC="llava.eval.model_vqa_loader"
 elif [ "$MODE" = "llama31" ]; then
     LLM_SETTING="--conv-mode llama_3_1 --llm_backbone llama_3_1 --llm_pad_token pad"
+    EXEC="llava.eval.model_vqa_loader"
+elif [ "$MODE" = "qwen25_vl" ]; then
+    LLM_SETTING=""
+    EXEC="qwenvl.eval.model_vqa_loader"
 else
     echo "Invalid mode: $MODE"
     exit
@@ -36,7 +45,7 @@ CHUNKS=${#GPULIST[@]}
 
 
 for IDX in $(seq 0 $((CHUNKS-1))); do
-    CUDA_VISIBLE_DEVICES=${GPULIST[$IDX]} python -m llava.eval.model_vqa_loader \
+    CUDA_VISIBLE_DEVICES=${GPULIST[$IDX]} python -m $EXEC \
         --model-path $CKPT_PATH \
         --question-file Shengcao1006/MMHal-Bench \
         --answers-file "${MMHAL_DIR}/answers/${CKPT}/${CHUNKS}_${IDX}.jsonl" \
@@ -65,7 +74,7 @@ done
 # sleep for safety
 sleep 2
 
-python llava/eval/eval_mmhal.py \
+python scripts/eval/eval_mmhal.py \
     --question-file Shengcao1006/MMHal-Bench \
     --result-file $output_file \
     --log_file "${MMHAL_DIR}/answers/${CKPT}.log" \

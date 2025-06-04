@@ -31,12 +31,14 @@ Welcome to the official repository for our paper: [**Generate, but Verify: Reduc
 ### 🔗 Model Checkpoints:
 - 🤗 [tsunghanwu/reverse_llava_v15](https://huggingface.co/tsunghanwu/reverse_llava_v15)  
 - 🤗 [tsunghanwu/reverse_llava_more](https://huggingface.co/tsunghanwu/reverse_llava_more)
+- 🤗 [tsunghanwu/reverse_qwen25_vl](https://huggingface.co/tsunghanwu/reverse_qwen25_vl)
 
 ### 📦 Dataset:
 - 🧾 [REVERSE Visual Instruct 1.3M](https://huggingface.co/datasets/tsunghanwu/reverse-instruct-1.3m)
 
 ### 📄 Change Log:
 - [04/17/2025]: REVERSE is now live on HuggingFace and GitHub! Explore checkpoints, dataset, and full paper from our <a href="https://reverse-vlm.github.io/">project site</a>.
+- [05/29/2025]: REVERSE supports Qwen2.5-VL and is also effective. Check it out!
 
 ---
 
@@ -65,8 +67,9 @@ cd reverse_vlm
 ## 📈 Evaluation
 
 - Download model checkpoints:  
-  - 🤗 [reverse_llava_v15](https://huggingface.co/tsunghanwu/reverse_llava_v15)  
-  - 🤗 [reverse_llava_more](https://huggingface.co/tsunghanwu/reverse_llava_more)
+  - 🤗 [reverse_llava_v15](https://huggingface.co/tsunghanwu/reverse_llava_v15) (LLaVA-v1.5-7B style model)
+  - 🤗 [reverse_llava_more](https://huggingface.co/tsunghanwu/reverse_llava_more) (LLaVA with LLama3.1-8B-Instruct style model)
+  - 🤗 [tsunghanwu/reverse_qwen25_vl](https://huggingface.co/tsunghanwu/reverse_qwen25_vl) (Qwen2.5-VL-3B-Instruct style model)
 
 - Download required evaluation files from [Google Drive](https://drive.google.com/file/d/1gdGFNFUAe09dAObVK3Riyr-4ejxYqMSt/view?usp=sharing)  
   → Unzip and place them into `playground/data/eval`. Then, follow the included instructions to download additional assets.
@@ -115,16 +118,21 @@ playground/data/
 - Add special tokens to the base LLM:
 
 ```bash
-python3 scripts/add_new_token_to_llm.py
+python3 scripts/add_new_token_to_llava.py
+python3 scripts/add_new_token_to_qwen.py
 ```
 
 Supported settings:
-- [lmsys/vicuna-7b-v1.5](https://huggingface.co/lmsys/vicuna-7b-v1.5), with mm_projector weights from [LLaVA-v1.5-7B's projector](https://huggingface.co/liuhaotian/llava-v1.5-mlp2x-336px-pretrain-vicuna-7b-v1.5)
-- [meta-llama/Llama-3.1-8B-Instruct](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct), with mm_projector weights from [LLaVA-MORE-8B's projector](https://huggingface.co/aimagelab/LLaVA_MORE-llama_3_1-8B-pretrain)
+- LoRA finetuning for LLaVA-series
+  - [lmsys/vicuna-7b-v1.5](https://huggingface.co/lmsys/vicuna-7b-v1.5), with mm_projector weights from [LLaVA-v1.5-7B's projector](https://huggingface.co/liuhaotian/llava-v1.5-mlp2x-336px-pretrain-vicuna-7b-v1.5)
+  - [meta-llama/Llama-3.1-8B-Instruct](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct), with mm_projector weights from [LLaVA-MORE-8B's projector](https://huggingface.co/aimagelab/LLaVA_MORE-llama_3_1-8B-pretrain)
+- Direct finetuning for the Qwen2.5-VL model
+  - [Qwen/Qwen2.5-VL-3B-Instruct](https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct)
+  - To ensure the apple-to-apple comparison, we fine-tune the released Qwen2.5-VL-3B model using both the LLaVA-FT setup and our REVERSE recipe, applying both on the same 100k subset. This allows us to directly compare the impact of our training/inference recipe against the basic training/inference baseline under consistent conditions as the Qwen2.5-VL's instruction tuning data is not publicly available.
 
-- Launch Training: `ash scripts/train/*.sh`
+- Launch Training: `bash scripts/train/*.sh`
 
-### 3. Merge LoRA Weights
+### 3. Merge LoRA Weights (for LLaVA series only)
 After training, merge the LoRA adapter weights into the base model:
 
 ```
@@ -142,7 +150,7 @@ CUDA_VISIBLE_DEVICES=5 python3 scripts/merge_lora_weights.py --model-path <your 
 
 ## 🙏  Acknowledgements
 
-We are grateful for the foundational code provided by [LLaVA](https://github.com/haotian-liu/LLaVA) and [LLaVA-More](https://github.com/aimagelab/LLaVA-MORE). Utilizing their resources implies agreement with their respective licenses. Our project benefits greatly from these contributions, and we acknowledge their significant impact on our work. 
+We are grateful for the foundational code provided by [LLaVA](https://github.com/haotian-liu/LLaVA), [LLaVA-More](https://github.com/aimagelab/LLaVA-MORE), and [Fine-tuning Qwen2-VL Series](https://github.com/2U1/Qwen2-VL-Finetune). Utilizing their resources implies agreement with their respective licenses. Our project benefits greatly from these contributions, and we acknowledge their significant impact on our work. 
 
 ## 📚 Citation
 
