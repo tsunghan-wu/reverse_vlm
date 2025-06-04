@@ -48,20 +48,19 @@ git clone https://github.com/tsunghan-wu/reverse_vlm
 cd reverse_vlm
 ```
 
-2. Set up the environment
+2. Set up the environment 
 
-```bash
-conda create -n reverse python=3.10 -y
-conda activate reverse
-pip install --upgrade pip  # enable PEP 660 support
-pip install -e .
-```
+- For LLaVA:
+  ```bash
+  conda create -n reverse python=3.10 -y
+  conda activate reverse
+  pip install --upgrade pip  # enable PEP 660 support
+  pip install -e .
+  pip install -e ".[train]"
+  pip install flash-attn --no-build-isolation --no-cache-dir
+  ```
 
-3. Install additional packages for training cases
-```
-pip install -e ".[train]"
-pip install flash-attn --no-build-isolation --no-cache-dir
-```
+- For Qwen series, please follow the installation guideline in [Qwen2-VL-Finetune](https://github.com/2U1/Qwen2-VL-Finetune).
 
 ## 📈 Evaluation
 
