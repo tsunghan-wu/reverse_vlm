@@ -26,7 +26,7 @@
 
 Welcome to the official repository for our paper: [**Generate, but Verify: Reducing Hallucination in Vision-Language Models with Retrospective Resampling**](https://arxiv.org/abs/2504.13169). Explore our project page [here](https://reverse-vlm.github.io/) for an interactive overview!
 
-**Authors**: [Tsung-Han Wu](https://tsunghan-wu.github.io/), [Heekyung Lee](https://linkedin.com/in/heekyung-lee-624753289), [Jiaxin Ge](https://jiaxin.ge), [Joseph E. Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/), [Trevor Darrell](https://people.eecs.berkeley.edu/~trevor/), [David M. Chan](https://dchan.cc/) (UC Berkeley & POSTECH)
+**Authors**: [Tsung-Han Wu](https://patrickthwu.com), [Heekyung Lee](https://kyunnilee.github.io), [Jiaxin Ge](https://jiaxin.ge), [Joseph E. Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/), [Trevor Darrell](https://people.eecs.berkeley.edu/~trevor/), [David M. Chan](https://dchan.cc/) (UC Berkeley & POSTECH)
 
 ### 🔗 Model Checkpoints:
 - 🤗 [tsunghanwu/reverse_llava_v15](https://huggingface.co/tsunghanwu/reverse_llava_v15)  
