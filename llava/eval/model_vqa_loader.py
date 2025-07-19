@@ -5,7 +5,7 @@ import shortuuid
 from tqdm import tqdm
 
 from llava.model.builder import load_pretrained_model
-from llava.utils import disable_torch_init, rejection_sampling_generate
+from llava.utils import disable_torch_init
 from llava.mm_utils import get_model_name_from_path
 from llava.eval.data_utils import get_dataloader
 from llava.eval.inference_utils import retrospective_resampling_generate, OPEN_ENDED_QA_DEFAULT_ANSWER
