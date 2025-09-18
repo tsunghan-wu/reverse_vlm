@@ -1,14 +1,14 @@
-<div align="center">
-  <img src="assets/logo.png" width="200" height="200">
+<div align="center">  
+  <img src="assets/logo.png" width="200" height="200">  
 
-  <h1>REVERSE-VLM:
-    Vision-Language Model with <br>
+  <h1>
+    REVERSE-VLM: Vision-Language Model with <br>
     <span style="font-weight: normal;">
-      <span style="color:#d35400; text-decoration: underline; font-weight: bold;">RE</span>trospective 
-      <span style="color:#d35400; text-decoration: underline; font-weight: bold;">VER</span>ification and 
+      <span style="color:#d35400; text-decoration: underline; font-weight: bold;">RE</span>trospective
+      <span style="color:#d35400; text-decoration: underline; font-weight: bold;">VER</span>ification and
       <span style="color:#d35400; text-decoration: underline; font-weight: bold;">SE</span>lf-correction
     </span>
-  </h1>
+  </h1>  
 
   <p>
     <a href="https://huggingface.co/collections/tsunghanwu/reverse-67f410b5d147edf2ed7817ae">
@@ -18,13 +18,16 @@
     <a href="https://arxiv.org/abs/2504.13169">
       <img src="https://img.shields.io/badge/arXiv-2504.13169-b31b1b.svg" alt="arXiv" />
     </a>
-  </p>
-
+    &nbsp;
+    <a href="https://neurips.cc/Conferences/2025">
+      <img src="https://img.shields.io/badge/NeurIPS-2025-blueviolet?logo=google-scholar&logoColor=white" alt="NeurIPS 2025" />
+    </a>
+  </p>  
 </div>
 
 ---
 
-Welcome to the official repository for our paper: [**Generate, but Verify: Reducing Hallucination in Vision-Language Models with Retrospective Resampling**](https://arxiv.org/abs/2504.13169). Explore our project page [here](https://reverse-vlm.github.io/) for an interactive overview!
+Welcome to the official repository for our paper: [**Generate, but Verify: Reducing Hallucination in Vision-Language Models with Retrospective Resampling (NeurIPS 2025)**](https://arxiv.org/abs/2504.13169). Explore our project page [here](https://reverse-vlm.github.io/) for an interactive overview!
 
 **Authors**: [Tsung-Han Wu](https://patrickthwu.com), [Heekyung Lee](https://kyunnilee.github.io), [Jiaxin Ge](https://jiaxin.ge), [Joseph E. Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/), [Trevor Darrell](https://people.eecs.berkeley.edu/~trevor/), [David M. Chan](https://dchan.cc/) (UC Berkeley & POSTECH)
 
@@ -39,6 +42,7 @@ Welcome to the official repository for our paper: [**Generate, but Verify: Reduc
 ### 📄 Change Log:
 - [04/17/2025]: REVERSE is now live on HuggingFace and GitHub! Explore checkpoints, dataset, and full paper from our <a href="https://reverse-vlm.github.io/">project site</a>.
 - [05/29/2025]: REVERSE supports Qwen2.5-VL and is also effective. Check it out!
+- [09/18/2025]: REVERSE is accepted to NeurIPS 2025!!!
 
 ---
 
